@@ -3,6 +3,36 @@
 // in the html.
 
 $(function () {
+  var currentHour = dayjs().hour();
+  console.log(currentHour);
+  for (var i = 9; i < 18; i++) {
+  $(`#hour-${i} .description`).val(localStorage.getItem(`hour-${i}`))
+  }
+  $('.time-block').each(function () {
+    var rowHour = parseInt($(this).attr('id').split('-')[1])
+    console.log(rowHour)
+    if (rowHour < currentHour) {
+      $(this).removeClass('present');
+      $(this).removeClass('future');
+      $(this).addClass('past');
+    }
+    else if (rowHour === currentHour) {
+      $(this).removeClass('past');
+      $(this).removeClass('future');
+      $(this).addClass('present');
+    }
+    else {
+      $(this).removeClass('present');
+      $(this).removeClass('past');
+      $(this).addClass('future')
+    }
+  })
+  $('.saveBtn').on('click', function () {
+    var hourKey = $(this).parent().attr('id');
+    var activity = $(this).siblings('.description').val()
+    localStorage.setItem(hourKey, activity)
+  })
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -25,5 +55,6 @@ $(function () {
 });
 
 function getCurrentDate() {
-  var now = dayjs()
+  var now = dayjs().format('dddd, MMMM D, YYYY')
+  $('#currentDay').text(now)
 }
