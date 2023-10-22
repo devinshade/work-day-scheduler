@@ -95,5 +95,7 @@ You are required to submit the following for review:
 
 * [The URL of the GitHub repository, with a unique name and a README describing the project](https://github.com/devinshade/work-day-scheduler)
 
+![My Workday Scheduler](./assets/Screenshot%202023-10-22%20at%202.28.03 PM.png)
+
 - - -
 © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
